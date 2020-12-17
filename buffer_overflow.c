@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
         }
         
         if (i >= 1000) {
-            printf("Could not smash the stack!");
+            printf("Could not smash the stack!\n");
             break;
         }
         

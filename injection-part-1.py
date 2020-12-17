@@ -13,22 +13,22 @@ def main():
     echo_wrapper_secure(malicious_command_injection_input)
 
     print_header("PATH TRAVERSAL EXPLOITATION")
-    file_reader_vulnerable("boring_public_file.txt")
+    file_reader_vulnerable("boring_public_file")
     file_reader_vulnerable(malicious_path_traversal_input)
     
     print_header("PATH TRAVERSAL MITIGATION")
-    file_reader_secure("boring_public_file.txt")
+    file_reader_secure("boring_public_file")
     file_reader_secure(malicious_path_traversal_input)
 
 def echo_wrapper_vulnerable(text):
-    subprocess.run("echo " + text, shell=True)
+    subprocess.run("echo \"" + text + "\";", shell=True)
 
 def echo_wrapper_secure(text):
     # TODO validate the input
     echo_wrapper_vulnerable(text)
 
 def file_reader_vulnerable(filepath):
-    with open("./public_files/" + filepath) as file:
+    with open("./public_files/" + filepath + ".txt") as file:
         file_contents = file.read()
         print(file_contents)
 
